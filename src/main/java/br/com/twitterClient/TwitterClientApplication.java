@@ -10,8 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TwitterClientApplication {
 
 	public static void main(String[] args) throws Exception {
-		defineJVMVariables("proxy-1dn.mb", "6060", "10132153700", "d2882a", "");
-		changeAuthenticator();
+		//CASO TENHA PROXY NA REDE
+		//defineJVMVariables("####", "#####", "#####", "¨####", "");
+		//changeAuthenticator();
 		SpringApplication.run(TwitterClientApplication.class, args);
 	}
 	
