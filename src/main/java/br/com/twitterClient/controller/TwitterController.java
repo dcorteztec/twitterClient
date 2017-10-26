@@ -37,7 +37,11 @@ public class TwitterController {
 			t.setText(tweet.getText());
 			t.setUserName(tweet.getUser().getName());
 			t.setLocation(tweet.getUser().getLocation());
-			tweetRepository.save(t);
+			try {
+				tweetRepository.save(t);
+			}catch (Exception e) {
+				System.out.println();
+			}
 		}
 		 return ret;
 	}
