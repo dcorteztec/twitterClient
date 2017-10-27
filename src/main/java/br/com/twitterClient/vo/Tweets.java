@@ -24,6 +24,9 @@ public class Tweets implements Serializable{
 	private Long idUser;
 	@Column(name="LOCATION")
 	private String location;
+	@Column(name="URL")
+	private String url;
+	
 	public Long getIdTweet() {
 		return idTweet;
 	}
@@ -54,6 +57,13 @@ public class Tweets implements Serializable{
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
 	
 	
 	
