@@ -24,11 +24,12 @@ public class TwitterController {
 	private Twitter twitter;
 	
 	@Autowired 
-    private ITweetRepository tweetRepository;
+        private ITweetRepository tweetRepository;
 
-	@RequestMapping(value="{hashTag}",produces= MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public List<Tweet> getTweet(@PathVariable("hashTag") final String hastag){
+	@RequestMapping(value="{hashTag}",produces= MediaType.APPLICATION_JSON_VALUE)
+	public List<Tweets> getTweet(@PathVariable("hashTag") final String hastag){
 		 List<Tweet> ret = null;
+		 List<Tweets> tweetRet = new ArrayList<Tweets>();
 		 ret = twitter.searchOperations().search(hastag,100).getTweets();
 		 for (Tweet tweet : ret) {
 			Tweets t = new Tweets();
@@ -37,13 +38,14 @@ public class TwitterController {
 			t.setText(tweet.getText());
 			t.setUserName(tweet.getUser().getName());
 			t.setLocation(tweet.getUser().getLocation());
-			try {
-				tweetRepository.save(t);
-			}catch (Exception e) {
-				System.out.println();
+			if(tweet.getEntities().getUrls()!=null&&tweet.getEntities().getUrls().size()>0) {
+				t.setUrl(tweet.getEntities().getUrls().get(0).getUrl());
+				
 			}
+			tweetRet.add(t);	
+			tweetRepository.save(t);
 		}
-		 return ret;
+		 return tweetRet;
 	}
 
 	
