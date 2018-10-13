@@ -25,7 +25,7 @@ public class TwitterController {
 	private Twitter twitter;
 	
 	@Autowired 
-        private ITweetRepository tweetRepository;
+    private ITweetRepository tweetRepository;
 
 	@RequestMapping(value="{hashTag}",produces= MediaType.APPLICATION_JSON_VALUE)
 	public List<Tweets> getTweet(@PathVariable("hashTag") final String hastag){

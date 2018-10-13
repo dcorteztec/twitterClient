@@ -2,29 +2,19 @@ package br.com.twitterClient.vo;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table
+
 public class Tweets implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID_TWEET")
 	private Long idTweet;
-	@Column(name="TEXT")
 	private String text;
-	@Column(name="USER_NAME")
 	private String userName;
-	@Column(name="USER_ID")
 	private Long idUser;
-	@Column(name="LOCATION")
 	private String location;
-	@Column(name="URL")
 	private String url;
 	
 	public Long getIdTweet() {

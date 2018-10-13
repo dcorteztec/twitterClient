@@ -2,17 +2,15 @@ package br.com.twitterClient.repository;
 
 import java.util.List;
 
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 import br.com.twitterClient.vo.Tweets;
 
-public interface ITweetRepository extends CrudRepository<Tweets, Long> {
+public interface ITweetRepository extends MongoRepository<Tweets, Long> {
 
-    @Query("SELECT t FROM Tweets t where t.text LIKE :busca%") 
-	List<Tweets> findByTweets(@Param("busca")String busca);
+	@Query("{ 'text' : ?0 }")
+	List<Tweets> findByTweets(String text);
 
 }
 
