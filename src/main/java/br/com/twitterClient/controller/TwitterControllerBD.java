@@ -3,6 +3,7 @@ package br.com.twitterClient.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -42,11 +43,11 @@ public class TwitterControllerBD {
 		int soma = 0;
 		double media = 0.0;
 		TweetHelpVO ret = new TweetHelpVO();
-		Tweets tweet = tweetRepository.findOne(idTweet);
-		String t = tweet.getText().replaceAll("\\s+", " ");
+		Optional<Tweets> tweet = tweetRepository.findById(idTweet);
+		String t = tweet.get().getText().replaceAll("\\s+", " ");
 		String[] text = t.split(" ");
 		ret.setNumeroPalavras(text.length);
-		ret.setText(tweet.getText());
+		ret.setText(tweet.get().getText());
 		for (int i = 0; i < text.length; i++) {
 			soma += text[i].length();
 			if (text[i].length() < text[imenor].length()) {
