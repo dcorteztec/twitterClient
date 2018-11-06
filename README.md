@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dcorteztec/twitterClient.svg?branch=master)](https://travis-ci.org/dcorteztec/twitterClient)
 <h1>Consuming twitter api with spring boot and JPA</h1>
 
 ###
